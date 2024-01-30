@@ -1,0 +1,71 @@
+﻿@model IEnumerable<LeaveTypeVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Create New <i class="fa-solid fa-plus"></i></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DefaultDays)
+            </th>
+   
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DefaultDays)
+            </td>
+           
+            <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen-to-square"></i>Edit</a> 
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-circle-info"></i>Details</a> 
+                    <button data-id="@item.Id" class="btn btn-danger deleteBtn" type="button"><i class="fa-solid fa-trash"></i>Delete</button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<form id="formsubmit"asp-action="Delete">
+  <input type="hidden" id="leaveTypeId" name="Id"/>
+</form>
+
+@section Scripts{
+    <script>
+        $(function () { 
+            $('.table').DataTable();
+            $('.deleteBtn').click(function (e) {
+                swal({
+                    title: "Are You Sure?",
+                    text: "Are you sure want to delete?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true
+                }).then((confirm) => {
+                    if (confirm) {
+                        var btn= $(this);
+                        var id = btn.data("id");
+                        $('#leaveTypeId').val(id);
+                        $('#formsubmit').submit();
+                    }
+                });
+            });
+        });
+    </script>
+}
