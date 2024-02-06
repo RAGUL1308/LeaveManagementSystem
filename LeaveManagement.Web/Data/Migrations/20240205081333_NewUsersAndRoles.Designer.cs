@@ -4,6 +4,7 @@ using LeaveManagement.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeaveManagement.Web.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240205081333_NewUsersAndRoles")]
+    partial class NewUsersAndRoles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,48 +103,6 @@ namespace LeaveManagement.Web.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "4c21cef6-5c60-4070-ae6e-c5533a2e4891",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "6cad5761-5b96-4d15-9cd6-48a6da214e1a",
-                            DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "ragultamilmani823@gmail.com",
-                            EmailConfirmed = true,
-                            FirstName = "Ragul",
-                            LastName = "Tamilmani",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "RAGULTAMILMANI823@GMAIL.COM",
-                            NormalizedUserName = "RAGULTAMILMANI823@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEIl0qlEGKljDrKtv+AaLiiE+tsgoxCqbfFDNmb4jyfkfs3yJJnIsoP9hlkpvsT6tCQ==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "0a6072d3-ba4b-4543-b714-6d93862007f4",
-                            TwoFactorEnabled = false,
-                            UserName = "ragultamilmani@gmail.com"
-                        },
-                        new
-                        {
-                            Id = "fe77bf15-58b0-4a05-abf7-49e46dd7a950",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "ed85e470-2bfb-4491-8dab-44e7b90588bd",
-                            DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "sam@gmail.com",
-                            EmailConfirmed = true,
-                            FirstName = "Sam",
-                            LastName = "Prasath",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "SAM@GMAIL.COM",
-                            NormalizedUserName = "SAM@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEA12bpgm+3msnEkAHxBtLWiSXQRJolqmR++P7ANXk3rYSD3PsLl8GmGgzYJN/nu53w==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "6a1806fe-0286-4fc7-9457-77ee8ec2548b",
-                            TwoFactorEnabled = false,
-                            UserName = "sam@gmail.com"
-                        });
                 });
 
             modelBuilder.Entity("LeaveManagement.Web.Data.LeaveAllocation", b =>
@@ -225,20 +186,6 @@ namespace LeaveManagement.Web.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "131b5285-1c4f-443b-83b0-e2c2585da0aa",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
-                        },
-                        new
-                        {
-                            Id = "db2c02b1-0962-4360-9b68-ee149ccfba04",
-                            Name = "User",
-                            NormalizedName = "USER"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -328,18 +275,6 @@ namespace LeaveManagement.Web.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "4c21cef6-5c60-4070-ae6e-c5533a2e4891",
-                            RoleId = "131b5285-1c4f-443b-83b0-e2c2585da0aa"
-                        },
-                        new
-                        {
-                            UserId = "fe77bf15-58b0-4a05-abf7-49e46dd7a950",
-                            RoleId = "db2c02b1-0962-4360-9b68-ee149ccfba04"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
