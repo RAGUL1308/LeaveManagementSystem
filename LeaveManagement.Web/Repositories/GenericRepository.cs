@@ -20,6 +20,7 @@ namespace LeaveManagement.Web.Repositories
             
         }
 
+
         public async Task DeleteAsync(int id)
         {
             var entity = await GetAsync(id);
@@ -50,6 +51,12 @@ namespace LeaveManagement.Web.Repositories
         public async Task UpdateAsync(T entity)
         {
             _context.Update(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task AddRangeAsync(List<T> entities)
+        {
+            await _context.AddRangeAsync(entities);
             await _context.SaveChangesAsync();
         }
     }

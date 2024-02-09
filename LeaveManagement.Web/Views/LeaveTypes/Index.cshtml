@@ -33,23 +33,27 @@
             </td>
            
             <td>
-                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen-to-square"></i>Edit</a> 
-                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-circle-info"></i>Details</a> 
-                    <button data-id="@item.Id" class="btn btn-danger deleteBtn" type="button"><i class="fa-solid fa-trash"></i>Delete</button>
+                    <button data-id="@item.Id" class="btn btn-primary allocateBtn" type="button">Allocate Leave</button>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen-to-square"></i></a> 
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-circle-info"></i></a> 
+                    <button data-id="@item.Id" class="btn btn-danger deleteBtn" type="button"><i class="fa-solid fa-trash"></i></button>
             </td>
         </tr>
 }
     </tbody>
 </table>
 
-<form id="formsubmit"asp-action="Delete">
+<form id="DeleteForm"asp-action="Delete">
   <input type="hidden" id="leaveTypeId" name="Id"/>
+</form>
+
+<form id="AllocationForm" asp-action="ALlocateLeave">
+    <input type="hidden" id="leaveTypeIdAllocate" name="Id" />
 </form>
 
 @section Scripts{
     <script>
         $(function () { 
-            $('.table').DataTable();
             $('.deleteBtn').click(function (e) {
                 swal({
                     title: "Are You Sure?",
@@ -62,7 +66,27 @@
                         var btn= $(this);
                         var id = btn.data("id");
                         $('#leaveTypeId').val(id);
-                        $('#formsubmit').submit();
+                        $('#DeleteForm').submit();
+                    }
+                });
+            });
+        });
+
+        $(function () {
+            $('.table').DataTable();
+            $('.allocateBtn').click(function (e) {
+                swal({
+                    title: "Are You Sure?",
+                    text: "Are you sure want to allocate?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true
+                }).then((confirm) => {
+                    if (confirm) {
+                        var btn = $(this);
+                        var id = btn.data("id");
+                        $('#leaveTypeIdAllocate').val(id);
+                        $('#AllocationForm').submit();
                     }
                 });
             });

@@ -4,6 +4,7 @@ using LeaveManagement.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeaveManagement.Web.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240207005602_UpdateEmployeeIdIntToString")]
+    partial class UpdateEmployeeIdIntToString
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,7 +109,7 @@ namespace LeaveManagement.Web.Data.Migrations
                         {
                             Id = "4c21cef6-5c60-4070-ae6e-c5533a2e4891",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "440572e6-2fc5-4acf-8a78-7772bd8ea42c",
+                            ConcurrencyStamp = "98a3f93c-e65a-4935-9a30-b07937e88713",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "ragultamilmani823@gmail.com",
@@ -116,9 +119,9 @@ namespace LeaveManagement.Web.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "RAGULTAMILMANI823@GMAIL.COM",
                             NormalizedUserName = "RAGULTAMILMANI823@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAhww0nu2O7czvfu00VnfLTKAGFWoHF0L9qt+f4xTBYBOpEZlh76Z1frN5XgcIWXyg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGxyMcdQLOY6w3PmVFojjBL4mBqGTRe8ikMWV4C0gScP7aJ85Bv/8Byy8QZ+JdI7ZQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5f171cfe-2598-427c-804b-4d6c5fac0f3f",
+                            SecurityStamp = "1ffe2b3c-b1de-4b4d-ab96-4fb9d75fa6f7",
                             TwoFactorEnabled = false,
                             UserName = "ragultamilmani@gmail.com"
                         },
@@ -126,7 +129,7 @@ namespace LeaveManagement.Web.Data.Migrations
                         {
                             Id = "fe77bf15-58b0-4a05-abf7-49e46dd7a950",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6e97f60a-4cfa-4345-a8ac-778734ea175e",
+                            ConcurrencyStamp = "cda88ca1-8ee0-4aaa-9683-c207e376496d",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "sam@gmail.com",
@@ -136,9 +139,9 @@ namespace LeaveManagement.Web.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SAM@GMAIL.COM",
                             NormalizedUserName = "SAM@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAELt9dooNLga5qqEpw8qXICQMpDfem1pO+YkhP+v1Ly640LN/XwJnY8/EBos2GxiNSw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMc6JSINNmBkDl0mvZvwNhYnoArAvsmHYyTNodJTlWBM15FhIC4y/+WWWkMt9IvU3A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "617fe816-c669-41cf-a61f-b195ea3a5e8f",
+                            SecurityStamp = "79488a95-cfdc-4b3b-82a5-370c36066345",
                             TwoFactorEnabled = false,
                             UserName = "sam@gmail.com"
                         });
@@ -175,7 +178,7 @@ namespace LeaveManagement.Web.Data.Migrations
 
                     b.HasIndex("LeaveTypeId");
 
-                    b.ToTable("LeaveAllocations", (string)null);
+                    b.ToTable("LeaveAllocations");
                 });
 
             modelBuilder.Entity("LeaveManagement.Web.Data.LeaveType", b =>
@@ -201,7 +204,7 @@ namespace LeaveManagement.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LeaveTypes", (string)null);
+                    b.ToTable("LeaveTypes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
