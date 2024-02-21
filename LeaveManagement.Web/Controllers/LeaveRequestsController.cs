@@ -20,11 +20,16 @@ namespace LeaveManagement.Web.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly ILeaveRequestRepository _leaveRequestRepository;
+        private readonly ILogger<LeaveRequestsController> _logger;
 
-        public LeaveRequestsController(ApplicationDbContext context, ILeaveRequestRepository leaveRequestRepository)
+        public LeaveRequestsController(ApplicationDbContext context,
+            ILeaveRequestRepository leaveRequestRepository,
+            ILogger<LeaveRequestsController> logger
+            )
         {
             _context = context;
             _leaveRequestRepository = leaveRequestRepository;
+            _logger = logger;
         }
 
         // GET: LeaveRequests
@@ -61,6 +66,7 @@ namespace LeaveManagement.Web.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Error Cancelling Request");
                 throw;
             }
             return RedirectToAction(nameof(MyLeave));
@@ -76,6 +82,7 @@ namespace LeaveManagement.Web.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Error Approving Request");
                 throw;
             }
             return RedirectToAction(nameof(Index));
@@ -115,6 +122,7 @@ namespace LeaveManagement.Web.Controllers
             }
             catch(Exception ex)
             {
+                _logger.LogError(ex, "Error Creating Request");
                 ModelState.AddModelError(string.Empty, "An Error has Occured");
 
             }
